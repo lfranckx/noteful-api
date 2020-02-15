@@ -7,6 +7,7 @@ const { NODE_ENV } = require('./config')
 const app = express()
 
 const foldersRouter = require('./folders/folders-router')
+const notesRouter = require('./notes/notes-router')
 
 const morganOption = (NODE_ENV === 'production')
   ? 'tiny'
@@ -18,9 +19,7 @@ app.use(cors())
 
 app.use('/api/folders', foldersRouter)
 
-app.get('/', (req, res) => {
-    res.send('Hello, boilerplate!')
-})
+app.use('/api/notes', notesRouter)
 
 app.use(function errorHandler(error, req, res, next) {
     let response
