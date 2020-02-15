@@ -17,6 +17,10 @@ app.use(morgan(morganOption))
 app.use(helmet())
 app.use(cors())
 
+app.get('/', function(req, res) {
+    res.json({status: true})
+  })
+
 app.use('/api/folders', foldersRouter)
 
 app.use('/api/notes', notesRouter)
